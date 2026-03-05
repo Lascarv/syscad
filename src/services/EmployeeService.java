@@ -9,9 +9,14 @@ public class EmployeeService {
 
 	List<Employee> list = new ArrayList<>();
 
-	public void addEmployee(Employee e) {
-		list.add(e);
+	public boolean addEmployee(Employee emp) {
+		if (findById(emp.getId()) != null){
+			return false;}
+		
+			list.add(emp);
+			return true;
 	}
+	
 
 	public Employee findById(int id) {
 		for (Employee e : list) {
@@ -37,18 +42,6 @@ public class EmployeeService {
 		emp.updateSalary(newSalary);
 		return true;
 	}
-
-	public boolean increaseEmployeeSalary(int id, Double percentage) {
-
-		Employee emp = findById(id);
-
-		if (emp == null) {
-			return false;
-		}
-
-		emp.increaseSalary(percentage);
-		return true;
-	}
 	
 	public boolean removeEmployee(int id) {
 		
@@ -62,4 +55,8 @@ public class EmployeeService {
 			return true;
 		}
 
+	public boolean employeeExists(int id) {
+		Employee emp = findById(id);
+		return emp != null;
+	}
 }

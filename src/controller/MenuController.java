@@ -9,10 +9,8 @@ public class MenuController {
 	
 	private EmployeeService service = new EmployeeService();
 	
-	public void addEmployee(int id, String name, double salary) {
-	
-		Employee emp = new Employee(id, name, salary);
-		service.addEmployee(emp);
+	public boolean addEmployee(Employee emp) {
+		return service.addEmployee(emp);
 		
 	}
 	
@@ -21,17 +19,18 @@ public class MenuController {
 	}
 	
 	public boolean updateSalary(int id, double newSalary) {
-		
 		return service.updateEmployeeSalary(id, newSalary);
-	}
-	
-	public boolean increaseSalary(int id, double salary) {
-		return service.increaseEmployeeSalary(id, salary);
 	}
 	
 	public boolean removeEmployee (int id) {
 		return service.removeEmployee(id);
 	}
 	
-
+	public Employee findById (int id) {
+		return service.findById(id);
+	}
+	
+	public boolean employeeExists(int id) {
+		return service.employeeExists(id);
+	}
 }

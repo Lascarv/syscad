@@ -1,8 +1,5 @@
 package entities;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Employee {
 
 	private int id;
@@ -39,17 +36,13 @@ public class Employee {
 	public void setSalary ( Double salary ) {
 		this.salary = salary;
 	}
-	
-	public void increaseSalary(Double percentage) {
-		salary += salary * (percentage / 100.0);
-	}
-	
+		
 	public void updateSalary (Double newSalary) {
 		salary = newSalary;
 	}
 	
 	@Override
 	public String toString() {
-		return "Id:" + id + "Nome: " + name + "Salário: " + salary;		
+		return "Id: " + id + " | Nome: " + name + " | Salário: " + salary;		
 	}
 }
