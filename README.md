@@ -20,15 +20,15 @@ Um simples sistema de cadastro de funcionários desenvolvido em Java, seguindo c
 <pre>
 src/ 
 ├── app/ 
-│ └── Program.java # Classe principal (ponto de entrada 
+│ └── Program.java 
 ├── ui/ 
-│ └── View.java # Interface com o usuário (console)
+│ └── View.java 
 ├── controller/
-│ └── MenuController.java # Controlador que recebe as requisições da View
+│ └── MenuController.java 
 ├── services/
-│ └── EmployeeService.java # Lógica de negócio e manipulação dos dados
+│ └── EmployeeService.java 
 └── entities/
-└── Employee.java # Entidade Funcionário
+└── Employee.java 
 </pre>
 
 ## Configurar ambiente:
@@ -76,7 +76,7 @@ javac app/Program.java ui/View.java controller/MenuController.java services/Empl
 java app.Program
 ```
 
-### Como usar:
+#### Como usar:
 
 *Ao executar, o programa irá abrir um menu com as opções:*
 
@@ -89,3 +89,18 @@ java app.Program
 </pre>
 
 > Para interagir com o menu, basta digitar o número correspondente e seguir as instruções do programa.
+
+## Observações
+
+- Os dados são armazenados **apenas em memória**. Ao encerrar o programa, todos os cadastros serão perdidos.
+- O ID de cada funcionário é único e não pode ser alterado após a criação.
+- O salário aceita valores decimais, mas **não há validação** de valores negativos.
+
+## Melhorias futuras
+
+> 1. Validações e exceções  
+> 2. Testes unitários  
+> 3. Persistência em arquivo  
+> 4. Spring Boot (API REST)  
+> 5. Banco de dados relacional  
+> 6. Documentação da API
