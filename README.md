@@ -99,8 +99,7 @@ java app.Program
 ## Melhorias futuras
 
 > 1. Validações e exceções  
-> 2. Testes unitários  
-> 3. Persistência em arquivo  
+> 2. Testes unitários
+> 3. Implementação do banco de dados
 > 4. Spring Boot (API REST)  
-> 5. Banco de dados relacional  
-> 6. Documentação da API
+> 5. Documentação da API
