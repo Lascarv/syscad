@@ -6,23 +6,16 @@ import java.util.Scanner;
 import controller.MenuController;
 import entities.Employee;
 
-/**
- * Classe responsável pela interação com o usuário. Aqui ficam as operações com
- * o menu e entrada/saída de dados.
- */
-
 public class View {
 
-	// Controller responsável por intermediar a comunicação com o service.
-	MenuController controller = new MenuController();
+	private final MenuController controller;
 
-	// Scanner responsável por inserir os dados digitados pelo usuário.
+	public View(MenuController controller) {
+		this.controller = controller;
+	}
+
 	Scanner sc = new Scanner(System.in);
 
-	/**
-	 * Inicia o menu principal. O menu permanece em execução até o usuário escolher
-	 * a opção 0.
-	 */
 	public void start() {
 
 		int option;
@@ -34,11 +27,10 @@ public class View {
 
 			option = sc.nextInt();
 
-			// Direciona para o método correspondente à opção escolhida
 			switch (option) {
 			case 0:
-			    System.out.println("Encerrando o programa...");
-			    break;
+				System.out.println("Encerrando o programa...");
+				break;
 			case 1:
 				addEmployee();
 				break;
@@ -57,11 +49,10 @@ public class View {
 			}
 
 		} while (option != 0);
-		
+
 		sc.close();
 	}
-	
-	// Exibe as opções do menu.
+
 	private void showMenu() {
 
 		System.out.println("-----------------------------------------------------------");
@@ -75,20 +66,12 @@ public class View {
 		System.out.println();
 	}
 
-	/**
-	 * Método responsável por cadastrar um novo funcionário. Antes de cadastrar,
-	 * verifica se já um funcionário com o ID informado.
-	 */
 	private void addEmployee() {
 
 		System.out.println("Digite o ID para cadastrar: ");
 		int id = sc.nextInt();
 		sc.nextLine();
 
-		/**
-		 * Verifica se já existe um funcionário com esse ID antes de seguir com as
-		 * próximas etapas do cadastro.
-		 */
 		if (controller.employeeExists(id)) {
 			System.out.println("Já existe um funcionário com esse ID.");
 			return;
@@ -98,24 +81,18 @@ public class View {
 		String name = sc.nextLine();
 
 		System.out.println("Digite o Salário: ");
-		double salary = sc.nextDouble();
+		Double salary = sc.nextDouble();
 		sc.nextLine();
 
-		// Cria o objeto funcionário e envia para o controller.
 		controller.addEmployee(new Employee(id, name, salary));
 		System.out.println("Funcionário cadastrado!");
 
 	}
 
-	/**
-	 * Lista todos os funcionários cadastrados. Antes de listar, verifica se a lista
-	 * está vazia.
-	 */
 	private void listEmployee() {
 
 		List<Employee> list = controller.listEmployees();
 
-		// Verifica se a lista está vazia.
 		if (list.isEmpty()) {
 			System.out.println("Nenhum funcionário encontrado.");
 			return;
@@ -123,39 +100,36 @@ public class View {
 		System.out.println("Exibindo funcionários: ");
 		System.out.println();
 
-		// Percorre a lista exibindo cada funcionário.
 		for (Employee e : list) {
 			System.out.println(e);
 		}
 	}
 
-	/**
-	 * Atualiza o salário de um funcionário a partir de um ID informado. Antes de
-	 * atualizar, verifica se o ID informado existe.
-	 */
 	private void updateSalary() {
 
 		System.out.println("Digite o ID para selecionar o funcionário: ");
 		int id = sc.nextInt();
 		sc.nextLine();
-		
-		// Verifica se o funcionário existe antes de atualizar o salário.
+
 		if (!controller.employeeExists(id)) {
 			System.out.println("Funcionário não encontrado");
 			return;
 		}
 
 		System.out.println("Digite o novo salário: ");
-		double newSalary = sc.nextDouble();
+		Double newSalary = sc.nextDouble();
 		sc.nextLine();
 
-		controller.updateSalary(id, newSalary);
-		System.out.println("Salário alterado com sucesso.");
+		boolean success = controller.updateSalary(id, newSalary);
+
+		if (success) {
+			System.out.println("Salário alterado com sucesso.");
+		} else {
+			System.out.println("Erro ao alterar salário. Verifique se o valor é válido.");
+		}
+
 	}
 
-	/**
-	 * Remove um funcionário do sistema a partir do ID informado.
-	 */
 	private void removeEmployee() {
 		System.out.println("Digite o ID para remover: ");
 		int id = sc.nextInt();
@@ -169,5 +143,5 @@ public class View {
 			System.out.println("Funcionário não encontrado");
 		}
 
-	} 
+	}
 }

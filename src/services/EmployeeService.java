@@ -7,16 +7,21 @@ import entities.Employee;
 
 public class EmployeeService {
 
-	List<Employee> list = new ArrayList<>();
+	private List<Employee> list = new ArrayList<>();
+
+	public List<Employee> getAllEmployees() {
+
+		return new ArrayList<>(list);
+	}
 
 	public boolean addEmployee(Employee emp) {
-		if (findById(emp.getId()) != null){
-			return false;}
-		
-			list.add(emp);
-			return true;
+		if (findById(emp.getId()) != null) {
+			return false;
+		}
+
+		list.add(emp);
+		return true;
 	}
-	
 
 	public Employee findById(int id) {
 		for (Employee e : list) {
@@ -27,11 +32,7 @@ public class EmployeeService {
 		return null;
 	}
 
-	public List<Employee> getAllEmployees() {
-		return list;
-	}
-
-	public boolean updateEmployeeSalary(int id, Double newSalary) {
+	public boolean updateEmployeeSalary(int id, Double salary) {
 
 		Employee emp = findById(id);
 
@@ -39,21 +40,21 @@ public class EmployeeService {
 			return false;
 		}
 
-		emp.updateSalary(newSalary);
+		emp.setSalary(salary);
 		return true;
 	}
-	
+
 	public boolean removeEmployee(int id) {
-		
+
 		Employee emp = findById(id);
-		
+
 		if (emp == null) {
 			return false;
 		}
-		
+
 		list.remove(emp);
-			return true;
-		}
+		return true;
+	}
 
 	public boolean employeeExists(int id) {
 		Employee emp = findById(id);

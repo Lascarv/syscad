@@ -2,10 +2,10 @@ package entities;
 
 public class Employee {
 
-	private int id;
+	private final int id;
 	private String name;
 	private Double salary;
-	Double percentage;
+
 	
 	public Employee (int id, String name, Double salary) {
 		this.id = id;
@@ -25,22 +25,10 @@ public class Employee {
 		return salary;
 	}
 	
-	public void setId ( int id ) {
-		this.id = id;
-	}
-	
-	public void setName ( String name ) {
-		this.name = name;
-	}
-	
 	public void setSalary ( Double salary ) {
 		this.salary = salary;
 	}
 		
-	public void updateSalary (Double newSalary) {
-		salary = newSalary;
-	}
-	
 	@Override
 	public String toString() {
 		return "Id: " + id + " | Nome: " + name + " | Salário: " + salary;		

@@ -7,10 +7,17 @@ import services.EmployeeService;
 
 public class MenuController {
 	
-	private EmployeeService service = new EmployeeService();
+	private final EmployeeService service;
+	
+	public MenuController(EmployeeService service) {
+		this.service = service;
+	}
 	
 	public boolean addEmployee(Employee emp) {
-		return service.addEmployee(emp);
+        if (emp == null) {
+            return false;
+        }
+        return service.addEmployee(emp);
 		
 	}
 	
@@ -18,15 +25,15 @@ public class MenuController {
 		return service.getAllEmployees();
 	}
 	
-	public boolean updateSalary(int id, double newSalary) {
-		return service.updateEmployeeSalary(id, newSalary);
+	public boolean updateSalary(int id, Double salary) {
+		return service.updateEmployeeSalary(id, salary);
 	}
 	
-	public boolean removeEmployee (int id) {
+	public boolean removeEmployee(int id) {
 		return service.removeEmployee(id);
 	}
 	
-	public Employee findById (int id) {
+	public Employee findById(int id) {
 		return service.findById(id);
 	}
 	
