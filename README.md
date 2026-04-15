@@ -62,18 +62,21 @@ git clone https://github.com/Lascarv/java-list-practice
 ```
 ## Como executar:
 
-1. Compile os arquivos Java (certifique-se de estar no diretório `src`):
+1. Entre no diretório `src` na pasta do projeto e abra o terminal (CMD, PowerShell, bash).
+
+2. No terminal, compile os arquivos Java com o seguinte comando:
    
 ```
 javac app/Program.java ui/View.java controller/MenuController.java services/EmployeeService.java entities/Employee.java
 ```
-2. Executar o programa:
+
+3. Digite o comando para executar o programa:
 
 ```
 java app.Program
 ```
 
-3. Como usar:
+### Como usar:
 
 *Ao executar, o programa irá abrir um menu com as opções:*
 
